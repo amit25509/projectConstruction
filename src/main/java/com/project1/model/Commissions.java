@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +15,8 @@ import javax.persistence.Table;
 public class Commissions 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMMISSION_SEQ")
+	@SequenceGenerator(name = "COMMISSION_SEQ", sequenceName = "COMMISSION_SEQ", allocationSize = 1 )
 	private Integer commissionId;
 	
 	@OneToOne(targetEntity = Bookings.class)

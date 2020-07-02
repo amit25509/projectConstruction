@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,12 +14,13 @@ import javax.persistence.Table;
 public class Locations 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOCATION_SEQ")
+	@SequenceGenerator(name = "LOCATION_SEQ", sequenceName = "LOCATION_SEQ", allocationSize = 1)
 	private Integer locationId;
 	
 	@Column(name = "location_name")
 	private String locationName;
-
+	
 	public Locations() {
 	}
 

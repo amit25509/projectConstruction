@@ -33,11 +33,24 @@ public class EmployeesServiceImpl implements EmployeesService {
 	@Override
 	public Employees addEmployees(Employees employee) {
 		// TODO Auto-generated method stub
-		Employees emp = employeesRepository.save(new Employees(employee.getName(), employee.getPhone(),
-				employee.getEmail(), employee.getAge(), employee.getExperience(), employee.isVerified(),
-				employee.getOccupation(), employee.getPassword(), employee.getImage(), employee.isAvailability(),
-				employee.getJobStartDate(), employee.getAadharFront(), employee.getAadharBack(),
-				employee.getCommissionRate(), employee.getLocationId()));
+		Employees emp = employeesRepository.save(new Employees(
+				employee.getName(), 
+				employee.getPhone(), 
+				employee.getEmail(), 
+				employee.getAge(), 
+				employee.getExperience(),
+				employee.getCommissionRate(),
+				employee.isVerified(),
+				employee.getOccupation(), 
+				employee.getPassword(), 
+				employee.getImage(), 
+				employee.isAvailability(),
+				employee.getJobStartDate(), 
+				employee.getAadharFront(), 
+				employee.getAadharBack(),
+				employee.getLocationId(),
+				employee.getAddressId()));
+		System.out.println(employee.getCommissionRate());
 		return emp;
 	}
 

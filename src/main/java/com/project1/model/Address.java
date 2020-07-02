@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +15,8 @@ import javax.persistence.Table;
 public class Address 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADDRESS_SEQ")
+	@SequenceGenerator(name = "ADDRESS_SEQ", sequenceName = "ADDRESS_SEQ", allocationSize = 1)
 	private Integer addressId;
 	
 	@Column(name = "building_name")
@@ -31,10 +33,6 @@ public class Address
 	
 	@Column(name = "street")
 	private String street;
-	
-	@OneToOne(targetEntity = Employees.class)
-	@JoinColumn(name="employee_id", referencedColumnName = "employeeId")
-	private Employees employeeId;
 	
 	public Address() {}
 	
