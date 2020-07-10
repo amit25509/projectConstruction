@@ -13,5 +13,7 @@ public interface EmployeesService {
 	public Optional<Employees> getEmployeesById(int id);
 	public Employees addEmployees(Employees employee);
 	public ResponseEntity<Employees> updateEmployees(Integer id, Employees updateEmployee);
-	public boolean deleteEmployees(int id); 
+	public boolean deleteEmployees(int id);
+	public Employees registerEmployees(Employees employee);
+	public String getEmployeeByPhone(Long phone, String password);
 }

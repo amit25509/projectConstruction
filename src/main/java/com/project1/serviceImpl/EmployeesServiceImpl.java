@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.project1.model.Employees;
 import com.project1.repository.EmployeesRepository;
 import com.project1.service.EmployeesService;
@@ -88,4 +87,44 @@ public class EmployeesServiceImpl implements EmployeesService {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public Employees registerEmployees(Employees employee) {
+		// TODO Auto-generated method stub
+		System.out.println(employee.getName());
+//		Employees emp = employeesRepository.save(new Employees(
+//				employee.getName(), 
+//				employee.getPhone(), 
+//				employee.getEmail(), 
+//				employee.getAge(), 
+//				employee.getExperience(),
+//				employee.getOccupation(), 
+//				employee.getPassword(), 
+//				employee.getImage(),
+//				employee.getAadharFront(), 
+//				employee.getAadharBack(),
+//				employee.getLocationId(),
+//				employee.getAddressId()));
+		
+		
+		
+		System.out.println("Inside");
+		return null;
+	}
+
+	@Override
+	public String getEmployeeByPhone(Long phone, String password) {
+		// TODO Auto-generated method stub
+		Optional<Employees> employeeData = employeesRepository.findByPhone(phone);
+		
+		Employees employee=employeeData.get();
+
+		if (employeeData.isPresent()&&employee.getPassword().equals(password)) {
+			return "Access Granted";
+		} else {
+			return "Access Denied";
+		}
+	}
+	
+	
 }

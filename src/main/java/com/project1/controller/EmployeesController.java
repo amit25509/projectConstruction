@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project1.model.Employees;
 import com.project1.service.EmployeesService;
 
@@ -61,7 +60,7 @@ public class EmployeesController {
 
 	// 3. ADD NEW EMPLOYEE
 	@PostMapping("/addemployee")
-	public ResponseEntity<Employees> createTutorial(@RequestBody Employees employee) {
+	public ResponseEntity<Employees> addEmployee(@RequestBody Employees employee) {
 		try {
 			Employees emp = employeeService.addEmployees(employee);
 
@@ -91,5 +90,32 @@ public class EmployeesController {
 			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
 		}
 
+	}
+	
+	//6. REGISTER EMPLOYEE
+	
+	@PostMapping("/registeremployee")
+	public ResponseEntity<Employees> registerEmployee(@RequestBody Employees employee) {
+		try {
+			System.out.println("1");
+			Employees emp = employeeService.registerEmployees(employee);
+			System.out.println("2");
+
+			return new ResponseEntity<>(emp, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+	
+	@GetMapping("/signin/{phone}/{password}")
+	public ResponseEntity<String> checkEmployee(@PathVariable("phone") Long phone,@PathVariable("password") String password) {
+		try {
+			System.out.println("test");
+			String check = employeeService.getEmployeeByPhone(phone, password);
+
+			return new ResponseEntity<>(check, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+		}
 	}
 }

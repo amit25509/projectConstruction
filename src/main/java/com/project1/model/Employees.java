@@ -58,7 +58,7 @@ public class Employees
 	@Column(name = "availability")
 	private boolean availability;
 	
-	@Column(name = "job_start_date",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP" ,nullable=false)
+	@Column(name = "job_start_date",columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date jobStartDate;
 	
@@ -68,7 +68,7 @@ public class Employees
 	@Column(name = "aadhar_back")
 	private String aadharBack;
 	
-	@OneToOne(targetEntity = Locations.class)
+	@OneToOne(targetEntity = Locations.class,cascade = CascadeType.MERGE)
 	@JoinColumn(name="location_id", referencedColumnName = "locationId")
 	private Locations locationId;
 	
@@ -82,9 +82,14 @@ public class Employees
 
 
 
-	public Employees(String name, Long phone, String email, Integer age, Integer experience, Integer commissionRate,
-			boolean isVerified, String occupation, String password, String image, boolean availability,
-			Date jobStartDate, String aadharFront, String aadharBack,Locations locationId,Address addressId) {
+	
+
+
+
+	public Employees(String name, Long phone, String email, Integer age, Integer experience,
+			Integer commissionRate, boolean isVerified, String occupation, String password, String image,
+			boolean availability, Date jobStartDate, String aadharFront, String aadharBack, Locations locationId,
+			Address addressId) {
 		super();
 		this.name = name;
 		this.phone = phone;
@@ -100,9 +105,32 @@ public class Employees
 		this.jobStartDate = jobStartDate;
 		this.aadharFront = aadharFront;
 		this.aadharBack = aadharBack;
-		this.commissionRate = commissionRate;
 		this.locationId = locationId;
-		this.addressId=addressId;
+		this.addressId = addressId;
+	}
+
+
+
+
+
+
+
+	public Employees(String name, Long phone, String email, Integer age, Integer experience, String occupation,
+			String password, String image, String aadharFront, String aadharBack,Locations locationId,
+			Address addressId) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.age = age;
+		this.experience = experience;
+		this.occupation = occupation;
+		this.password = password;
+		this.image = image;
+		this.aadharFront = aadharFront;
+		this.aadharBack = aadharBack;
+		this.locationId = locationId;
+		this.addressId = addressId;
 	}
 
 

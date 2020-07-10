@@ -62,7 +62,7 @@ public class BookingsController {
 	
 	
 	//3. ADD NEW BOOKINGS
-	@PostMapping("/newbookings")
+	@PostMapping("/addbookings")
 	public ResponseEntity<Bookings> createTutorial(@RequestBody Bookings add) {
 		try {
 			Bookings bookings = bookingsService.addBookings(add);
