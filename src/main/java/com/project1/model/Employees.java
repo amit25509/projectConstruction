@@ -75,11 +75,15 @@ public class Employees
 	@OneToOne(targetEntity = Address.class,cascade = CascadeType.ALL)
 	@JoinColumn(name="address_id", referencedColumnName = "addressId")
 	private Address addressId;
+	
+	@Column(name = "enabled",nullable=false,columnDefinition="BIT default 1")
+	private boolean enabled=true;
+	
+		
 
 	
 	public Employees() {
 	}
-
 
 
 	
@@ -89,7 +93,7 @@ public class Employees
 	public Employees(String name, Long phone, String email, Integer age, Integer experience,
 			Integer commissionRate, boolean isVerified, String occupation, String password, String image,
 			boolean availability, Date jobStartDate, String aadharFront, String aadharBack, Locations locationId,
-			Address addressId) {
+			Address addressId, boolean enabled) {
 		super();
 		this.name = name;
 		this.phone = phone;
@@ -107,33 +111,8 @@ public class Employees
 		this.aadharBack = aadharBack;
 		this.locationId = locationId;
 		this.addressId = addressId;
+		this.enabled = enabled;
 	}
-
-
-
-
-
-
-
-	public Employees(String name, Long phone, String email, Integer age, Integer experience, String occupation,
-			String password, String image, String aadharFront, String aadharBack,Locations locationId,
-			Address addressId) {
-		super();
-		this.name = name;
-		this.phone = phone;
-		this.email = email;
-		this.age = age;
-		this.experience = experience;
-		this.occupation = occupation;
-		this.password = password;
-		this.image = image;
-		this.aadharFront = aadharFront;
-		this.aadharBack = aadharBack;
-		this.locationId = locationId;
-		this.addressId = addressId;
-	}
-
-
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -324,22 +303,29 @@ public class Employees
 	public void setAadharBack(String aadharBack) {
 		this.aadharBack = aadharBack;
 	}
-
-
-
-
-
-
-
 	public Locations getLocationId() {
 		return locationId;
 	}
+
+	
+
+
+
 
 
 
 	public void setLocationId(Locations locationId) {
 		this.locationId = locationId;
 	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 	
 	
 

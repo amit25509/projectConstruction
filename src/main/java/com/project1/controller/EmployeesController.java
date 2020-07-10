@@ -20,7 +20,7 @@ import com.project1.service.EmployeesService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/employee")
 public class EmployeesController {
 
 	@Autowired
@@ -110,7 +110,6 @@ public class EmployeesController {
 	@GetMapping("/signin/{phone}/{password}")
 	public ResponseEntity<String> checkEmployee(@PathVariable("phone") Long phone,@PathVariable("password") String password) {
 		try {
-			System.out.println("test");
 			String check = employeeService.getEmployeeByPhone(phone, password);
 
 			return new ResponseEntity<>(check, HttpStatus.CREATED);

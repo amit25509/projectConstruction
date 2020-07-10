@@ -21,7 +21,7 @@ import com.project1.service.LocationService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/location")
 public class LocationsController {
 
 	@Autowired

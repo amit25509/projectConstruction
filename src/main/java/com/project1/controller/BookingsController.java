@@ -22,7 +22,7 @@ import com.project1.service.BookingsService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/booking")
 public class BookingsController {
 
 	@Autowired

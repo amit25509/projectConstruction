@@ -48,7 +48,8 @@ public class EmployeesServiceImpl implements EmployeesService {
 				employee.getAadharFront(), 
 				employee.getAadharBack(),
 				employee.getLocationId(),
-				employee.getAddressId()));
+				employee.getAddressId(),
+				employee.isEnabled()));
 		System.out.println(employee.getCommissionRate());
 		return emp;
 	}
